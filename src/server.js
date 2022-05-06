@@ -2,6 +2,7 @@ const yargs = require("yargs");
 const { sequelize } = require("./db/connection");
 // imports for CRUD functions
 const { addMovie, listMovies } = require("./movie/movieMethods");
+const Movie = require("./movie/movieTable");
 
 const app = async (yargsObj) => {
     try {
@@ -14,8 +15,12 @@ const app = async (yargsObj) => {
             console.log(await listMovies());
         } else if (yargsObj.update) {
             //update one movie
+            await updateMovie ({title:yargsObj.title});
+           
         } else if (yargsObj.delete) {
             // delete one movie
+            await deleteMovie ({ title:yargsObj.title})
+            
 
         }   else {
             console.log("Incorrect command");

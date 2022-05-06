@@ -6,6 +6,7 @@ const Movie = sequelize.define("Movie", {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        primaryKey: true,
 
     },
     actor: {
